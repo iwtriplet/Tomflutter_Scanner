@@ -56,34 +56,36 @@ class ResultScreen extends StatelessWidget {
   }
 
  @override
-Widget build(BuildContext context) {
-  return Scaffold(
-    appBar: AppBar(
-      title: Text('Result'),
-      centerTitle: true,
-    ),
-    body: SingleChildScrollView(
-          padding: const EdgeInsets.all(30.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Text(
-                text,
-                style: TextStyle(fontSize: 20),
-              ),
-              SizedBox(height: 20),
-              ElevatedButton(
-                onPressed: () => _copyToClipboard(context),
-                child: Text('Copy to Clipboard'),
-              ),
-              SizedBox(height: 10),
-              ElevatedButton(
-                onPressed: () => _saveAsPdf(context),
-                child: Text('Save as PDF'),
-              ),
-            ],
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Result'),
+        centerTitle: true,
+        actions: [
+          IconButton(
+            icon: Icon(Icons.copy),
+            onPressed: () => _copyToClipboard(context),
           ),
+          IconButton(
+            icon: Icon(Icons.save),
+            onPressed: () => _saveAsPdf(context),
+          ),
+        ],
+      ),
+      body: SingleChildScrollView(
+        padding: const EdgeInsets.all(30.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Text(
+              text,
+              style: TextStyle(fontSize: 20),
+            ),
+            SizedBox(height: 20),            
+            SizedBox(height: 10),            
+          ],
         ),
-      );
-}
+      ),
+    );
+  }
 }
